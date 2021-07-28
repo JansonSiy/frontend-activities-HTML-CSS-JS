@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var janWeight = 80;
+        var janHeight = 2.05;
+
+        var nikkaWeight = 49;
+        var nikkaHeight = 1.30;
+
+        // BMI = kg/m2
+        var janBMI = janWeight / (janHeight * janHeight);
+        var nikkaBMI = nikkaWeight / (nikkaHeight * nikkaHeight);
+    
+        console.log(janBMI, nikkaBMI);
+
+        if (janBMI > nikkaBMI) {
+            console.log("Jan has a higher BMI than Nikka");
+        } else {
+            console.log("Nikka has a higher BMI than Jan");
+        };
+    </script>
+</body>
+</html>

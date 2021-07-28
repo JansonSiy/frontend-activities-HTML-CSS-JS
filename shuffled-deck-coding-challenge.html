@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var deck = [
+            'A♠', '2♠', '3♠', '4♠', '5♠', '6♠', '7♠', '8♠', '9♠', '10♠', 'J♠', 'Q♠', 'K♠',
+            'A♣', '2♣', '3♣', '4♣', '5♣', '6♣', '7♣', '8♣', '9♣', '10♣', 'J♣', 'Q♣', 'K♣',
+            'A♥', '2♥', '3♥', '4♥', '5♥', '6♥', '7♥', '8♥', '9♥', '10♥', 'J♥', 'Q♥', 'K♥',
+            'A♦', '2♦', '3♦', '4♦', '5♦', '6♦', '7♦', '8♦', '9♦', '10♦', 'J♦', 'Q♦', 'K♦'];
+
+        console.log(deck);
+
+        function shuffle(deck) {
+            var newDeck = JSON.parse(JSON.stringify(deck));
+            // making it a string and reverting it back to the original, so you can reuse var=deck
+            
+            for (var i = 0; i < newDeck.length; i++) {
+            // start with first card = 0 and ends with the last card = 52
+                var tempCard = newDeck[i];
+                // this means go through all of the values in the deck
+                var randomIndex = Math.floor(Math.random() * 52);
+                // returns a random integer from 0 to 51
+                newDeck[i] = newDeck[randomIndex];
+                // replace the tempCard with the new randomCard
+                newDeck[randomIndex] = tempCard;
+                // replace the randomCard with the tempCard
+            };
+        
+            return newDeck;
+            // return the deck that's shuffled
+        };
+
+        console.log(shuffle(deck));
+    </script>
+</body>
+</html>
