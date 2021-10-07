@@ -1,0 +1,348 @@
+<!-- error -->
+<html lang="en">
+<head>
+<meta charset="utf-16">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<style>
+    main .header h1 { margin: 16px; }
+    /* error */
+    body {
+    background-color: #f0f0f0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    /* error */
+    }
+    form .input { margin: 16px 0; }
+    /* error */
+    form { padding: 16px; }
+    /* error */
+    .header {
+    border-bottom: 1px solid rgb(0 0 0 / 15%);
+    /* error */
+    }
+    form .input input,
+    /* error */
+    form [type="submit"] {
+    /* error */
+    width: 100%; height: 2em;
+    /* error */
+    font-size: 16px;
+    /* error */
+    line-height: 2em;
+    /* error */
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding: 0 10px;
+    /* error */
+    }
+    [type="submit"]:active {
+    background-color: #8ac7db;
+    }
+    [type="submit"] {
+    border: 1px solid #aaa;
+    background-color: #add8e6;
+    cursor: pointer;
+    }
+    /* error */
+    main {
+    position: absolute;
+    top: 50%; left: 50%;
+    /* error */
+    transform: translate(-50%, -50%);
+    background-color: white;
+    /* error */
+    width: 400px;
+    padding: 16px;
+    box-shadow: 0 3px 5px -1px rgb(0 0 0 / 20%),
+    0 5px 8px 0 rgb(0 0 0 / 14%),
+    0 1px 14px 0 rgb(0 0 0 / 12%);
+    /* error */
+    }
+</style>
+<script>
+    // TEST
+    // function login(){
+
+    function login(event){
+        event.stopPropagation();
+
+        let user = document.getElementById('user');
+        let pass = document.getElementById('pass');
+        
+        // TEST
+        // console.log(user);
+
+        localStorage.setItem('user', user.value);
+        localStorage.setItem('pass', pass.value);
+        
+        let data = {user: user.value, pass: pass.value};
+        console.log(data);
+        
+        fetch('/api/login', {
+            method: 'POST',
+            cache: 'no-cache',
+            body: JSON.stringify(data),
+        })
+            .then(function(response){
+            if ( response.ok )
+                return response.json()
+            throw new Error('Invalid login');
+            })
+            .then(function(data){
+            location.href = data.redirect;
+            localStorage.setItem('userdata', data.userdata);
+            console.log(data.userdata);
+            })
+            .catch(function(error){
+                console.error(error.message);
+            });
+    }
+        let submit = document.getElementById('submit');
+        submit.addEventListener('click', login);
+
+        // TEST
+        // submit.addEventListener('click', function login(event){
+        //     window.location.reload();
+        // });
+        // TEST
+</script>
+</head>
+<body>
+<main>
+    <div class="header"><h1>Login</h1></div>
+    <form>
+        <div class="input">
+            <input id="user" placeholder="username" autofocus>
+        </div>
+        <div class="input">
+            <input id="pass" placeholder="password">
+        </div>
+        <button type="submit" id="submit">Login</button>
+        <!-- TEST -->
+        <!-- <button type="submit" id="submit" onclick="login()">Login</button> -->
+    </form>
+</main>
+</body>
+</html>
+
+<!--
+Please review the following code snippet and provide a critique of the code.
+Make a list of:
+(a) problems that you see (from a code correctness, quality and maintainability standpoint)
+(b) a reason for them being a problem
+(c) a proposed improvement
+We spotted at least 20 trouble spots, so don’t be shy!
+
+PROBLEM 1
+(a) PROBLEM:
+Line 1 is missing <!DOCTYPE html>.
+
+(b) REASON:
+The declaration of the document type helps browsers display web pages properly.
+
+It is an instruction to the web browser on what version of HTML the page is written in.
+
+(c) PROPOSED IMPROVEMENT:
+Simple put <!DOCTYPE html> on line 1.
+
+PROBLEM 2
+(a) PROBLEM:
+This line - main .header h1 { margin: 16px; }
+
+(b) REASON:
+Code is not readable. Not following proper structure/format.
+
+(c) PROPOSED IMPROVEMENT:
+Line should be like below.
+
+main, .header, h1 {
+    margin: 16px;
+}
+
+Elements, classes and ids should be separated by comma and proper spacing should be observed for other developers who'd read it.
+
+The main issue is that "main .header" could mean or be the same as "main.header". In code it translates as <main class="header">
+
+Basing on the given code in the <body>, specifically here:
+<main>
+    <div class="header">
+
+<div> has the class="header", not <main>. The design will not push through if it's intended there.
+
+PROBLEM 3
+(a) PROBLEM:
+Inconsistent grouping in CSS & reusing of same style.
+
+(b) REASON:
+It doesn't look good, not organized but it is still functional.
+
+(c) PROPOSED IMPROVEMENT:
+Simple grouping of styles, like for font-size: 16px;
+
+Example: 
+body, form, input, .input {
+font-size: 16px;
+}
+
+PROBLEM 4
+(a) PROBLEM:
+Problems with format & syntax with this line form .input { margin: 16px 0; }
+
+(b) REASON:
+Code not readable and could easily be misunderstood.
+
+(c) PROPOSED IMPROVEMENT:
+Simple put comma between form and .input. Second fix spacing, lastly clarify margin style.
+
+margin has a shorthand which is margin: 0px 0px 0px 0px. This is respectively for top, right, bottom and left. margin: 16px 0; feels incomplete.
+
+Change it to the code below:
+    form, .input {
+        margin: 16px;
+    }
+
+PROBLEM 5
+(a) PROBLEM:
+The problem is in this line form { padding: 16px; }.
+
+(b) REASON:
+padding: 16px; was reused, better to group it with <main> element. Also, formatting problems.
+
+(c) PROPOSED IMPROVEMENT:
+Change it to the code below:
+form, main { 
+    padding: 16px;
+}
+
+PROBLEM 6
+(a) PROBLEM:
+This line border-bottom: 1px solid rgb(0 0 0 / 15%);
+
+(b) REASON:
+The mentioned line is not following parameter structure.
+
+rgba accepts 4 parameters, this is for red, green, blue and opacity(0.0 - fully transparent) and 1.0 - not transparent at all).
+
+Lastly no "/", no "%" and still need to understand what "15%" is.
+
+(c) PROPOSED IMPROVEMENT:
+Change it to the code below:
+.header {
+    border-bottom: 1px solid rgba(0, 0, 0, 1);
+}
+
+PROBLEM 7
+(a) PROBLEM:
+This line below
+form .input input,
+form [type="submit"] {
+
+(b) REASON:
+Did not follow proper format again to avoid confusion.
+
+Since <form> doesn't have a class="input" there should be a comma seperating elements and classes.
+
+(c) PROPOSED IMPROVEMENT:
+Change it to the code below:
+form, .input, input, form [type="submit"] {
+
+
+PROBLEM 8
+(a) PROBLEM:
+This line width: 100%; height: 2em;
+
+(b) REASON:
+Wrong structuring of code.
+
+(c) PROPOSED IMPROVEMENT:
+Just simply fix it to:
+{
+width: 100%;
+height: 2em;
+
+PROBLEM 9
+(a) PROBLEM:
+This line line-height: 2em;
+
+(b) REASON:
+Wrong usage of line-height. It's commonly used to set the distance between lines of text.
+
+I don't see the need for it here.
+
+(c) PROPOSED IMPROVEMENT:
+Just simply delete it.
+
+PROBLEM 10
+(a) PROBLEM:
+This line padding: 0 10px;
+
+(b) REASON:
+Confusing padding style.
+
+(c) PROPOSED IMPROVEMENT:
+padding has the same shorthand as margin's. Top, right, bottom, left respectively.
+
+0 should be removed instead of doing padding: 0px 10px 0px 0px; or specifically declare padding-right: 10px
+
+PROBLEM 11
+(a) PROBLEM:
+This line:
+[type="submit"] {
+border: 1px solid #aaa;
+background-color: #add8e6;
+cursor: pointer;
+}
+
+(b) REASON:
+Designs are overlapping, might as well just use one of which.
+
+(c) PROPOSED IMPROVEMENT:
+Remove either [type="submit"] or form [type="submit"] design.
+
+PROBLEM 12
+(a) PROBLEM: This line:
+main {
+    position: absolute;
+    top: 50%; left: 50%;
+
+(b) REASON: Wrong formatting again.
+
+(c) PROPOSED IMPROVEMENT:
+Chnage to:
+main {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+PROBLEM 13
+(a) PROBLEM:
+This line:
+main {
+    position: absolute;
+    top: 50%; left: 50%;
+    background-color: white;
+
+(b) REASON:
+Overlapping background-color design. Initially, <main> was given background-color: #f0f0f0;
+
+Now, another background-color is being passed through.
+
+(c) PROPOSED IMPROVEMENT:
+Just remove the overlapping design
+
+PROBLEM 14
+(a) PROBLEM:
+This line:
+box-shadow: 0 3px 5px -1px rgb(0 0 0 / 20%),
+0 5px 8px 0 rgb(0 0 0 / 14%),
+0 1px 14px 0 rgb(0 0 0 / 12%);
+
+(b) REASON:
+Color is not being read because it lacks comma for the rgb.
+
+(c) PROPOSED IMPROVEMENT:
+Simple add commas in between colors.
+box-shadow: 0 3px 5px -1px rgb(0, 0, 0, 20%),
+0 5px 8px 0 rgb(0, 0, 0, 14%),
+0 1px 14px 0 rgb(0, 0, 0, 12%);
+-->
