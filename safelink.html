@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var arr = ["X:-1", "Y:1", "X:-4", "B:3", "X:5"];
+        // STEP 0: Create an empty object
+        var obj = {};
+
+        // STEP 1: Loop through var arr
+        for (var i = 0; i < arr.length; i++) {
+            // STEP 2: Split the key and value at the ':' character
+            var split = arr[i].split(':');
+            // STEP 3: Obj now has the element[i], using index[0] as the key and index[1] as the value
+            obj[split[0]] = split[1];
+        }
+
+        // output is {X: '5', Y: '1', B: '3'}
+        console.log(obj);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

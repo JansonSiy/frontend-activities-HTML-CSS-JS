@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-16">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<script src="js_name.js" defer></script>
 <style>
     main .header h1 { margin: 16px; }
     /* error */
@@ -59,53 +60,6 @@
     /* error */
     }
 </style>
-<script>
-    // TEST
-    // function login(){
-
-    function login(event){
-        event.stopPropagation();
-
-        let user = document.getElementById('user');
-        let pass = document.getElementById('pass');
-        
-        // TEST
-        // console.log(user);
-
-        localStorage.setItem('user', user.value);
-        localStorage.setItem('pass', pass.value);
-        
-        let data = {user: user.value, pass: pass.value};
-        console.log(data);
-        
-        fetch('/api/login', {
-            method: 'POST',
-            cache: 'no-cache',
-            body: JSON.stringify(data),
-        })
-            .then(function(response){
-            if ( response.ok )
-                return response.json()
-            throw new Error('Invalid login');
-            })
-            .then(function(data){
-            location.href = data.redirect;
-            localStorage.setItem('userdata', data.userdata);
-            console.log(data.userdata);
-            })
-            .catch(function(error){
-                console.error(error.message);
-            });
-    }
-        let submit = document.getElementById('submit');
-        submit.addEventListener('click', login);
-
-        // TEST
-        // submit.addEventListener('click', function login(event){
-        //     window.location.reload();
-        // });
-        // TEST
-</script>
 </head>
 <body>
 <main>
@@ -117,9 +71,8 @@
         <div class="input">
             <input id="pass" placeholder="password">
         </div>
-        <button type="submit" id="submit">Login</button>
-        <!-- TEST -->
-        <!-- <button type="submit" id="submit" onclick="login()">Login</button> -->
+        <!-- updated -->
+        <button type="button" id="submit">Login</button>
     </form>
 </main>
 </body>
@@ -345,4 +298,84 @@ Simple add commas in between colors.
 box-shadow: 0 3px 5px -1px rgb(0, 0, 0, 20%),
 0 5px 8px 0 rgb(0, 0, 0, 14%),
 0 1px 14px 0 rgb(0, 0, 0, 12%);
+
+PROBLEM 15
+(a) PROBLEM:
+CSS and JavaScript are internal.
+
+(b) REASON:
+CSS and JavaScript should be externally linked.
+
+(c) PROPOSED IMPROVEMENT:
+Add the below in the <head> and paste the CSS and JS code in the newly created files.
+<link rel="stylesheet" href="style_name.css">
+<script src="js_name.js" defer></script>
+
+PROBLEM 16
+(a) PROBLEM:
+<button type="submit" id="submit">Login</button>
+
+(b) REASON:
+type="submit" and JS function are overlapping.
+
+(c) PROPOSED IMPROVEMENT:
+change type from "submit" to "button"
+
+PROBLEM 17
+(a) PROBLEM:
+This section in <script></script>
+function login(event){
+    event.stopPropagation();
+
+(b) REASON:
+Passing the event in the parameter login() won't be needed as I recommend to delete event.stopPropagation();
+
+event.stopPropagation(); If I understood it correctly, stops incoming events after this event
+
+I believe there is no need for it.
+
+(c) PROPOSED IMPROVEMENT:
+Clean up code, change it to:
+function login(){
+
+PROBLEM 18
+(a) PROBLEM:
+This section in <script></script>
+let user = document.getElementById('user');
+let pass = document.getElementById('pass');
+
+localStorage.setItem('user', user.value);
+localStorage.setItem('pass', pass.value);
+
+(b) REASON:
+First, I would not recomment saving the username and password in the localStorage
+
+Second, I prefer to put .value in the variable, it looks cleaner to me.
+Example: let user = document.getElementById('user').value;
+
+(c) PROPOSED IMPROVEMENT:
+If it were up to me, I would delete this block.
+Other than the reason mentioned above, since after the API fetch, you would also save it in the localStorage. It becomes redundant.
+
+PROBLEM 19
+(a) PROBLEM:
+This section in <script></script>
+let submit = document.getElementById('submit');
+submit.addEventListener('click', login);
+
+&
+
+<button type="submit" id="submit">Login</button>
+
+(b) REASON:
+I believe there is a way to shorten the code.
+
+
+(c) PROPOSED IMPROVEMENT:
+STEP 1 - delete this
+let submit = document.getElementById('submit');
+submit.addEventListener('click', login);
+
+STEP 2 - after revising the button type, add an onclick function. Like this.
+<button type="button" id="submit" onclick="login()">Login</button>
 -->
