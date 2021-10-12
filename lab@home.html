@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // Trail 1
+        // var n = 3;
+        // var emptyArr = [];
+
+        // if (n % 3 == 0 && n % 5 == 0) {
+        //     emptyArr.push('FizzBuzz', 'Fizz', 'Buzz');
+        //     console.log('FizzBuzz', 'Fizz', 'Buzz');
+        // } else if (n % 3 == 0) {
+        //     emptyArr.push('Fizz');
+        //     console.log('Fizz');
+        // } else if (n % 5 == 0) {
+        //     emptyArr.push('Buzz');
+        //     console.log('Buzz');
+        // } else {
+        //     emptyArr.push(n)
+        //     console.log(n);
+        // };
+  
+        // console.log(emptyArr);
+
+        // Trial 2
+        var i = 1;
+        var n = 10;
+        var emptyArr = [];
+
+        while (i <= n) {
+            if (i % 3 == 0 && i % 5 == 0) {
+                emptyArr.push('FizzBuzz');
+            } else if (i % 3 == 0) {
+                emptyArr.push('Fizz');
+            } else if (i % 5 == 0) {
+                emptyArr.push('Buzz');
+            } else {
+                emptyArr.push(i)
+            };
+
+            i++;
+
+            console.log(emptyArr);
+        };
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
