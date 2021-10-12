@@ -6,24 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>
-        var arr = ["X:-1", "Y:1", "X:-4", "B:3", "X:5"];
+        // FIRST CHALLENGE
+        let arr = ["X:-1", "Y:1", "X:-4", "B:3", "X:5"];
 
         // create an empty object
-        var obj = {};
+        let obj = {};
 
-        // loop through var arr
+        // loop through the arr
         for (let i = 0; i < arr.length; i++) {
             // split the key and value at the ':' character
             let split = arr[i].split(':');
             // obj now has the element[i], using index[0] as the key and index[1] as the value
             obj[split[0]] = split[1];
+            // sort obj
+            // obj.sort((a, b) => (a.split[0] > b.split[0]) ? 1 : -1);
         }
 
         // output is {X: '5', Y: '1', B: '3'}
         console.log(obj);
 
         // create an empty string
-        var string = "";
+        let string = "";
 
         // loop through the updated obj then add to string
         for (let i in obj) {
@@ -35,11 +38,25 @@
         }
 
         // output is X:5,Y:1,B:3
-        console.log(string);
+        console.log(string.substring(0, string.length -1));
 
         // resources
         // https://stackoverflow.com/questions/27412260/converting-string-array-into-a-key-value-pair-object
         // https://code-boxx.com/object-to-string-javascript/
+
+        // SECOND CHALLENGE
+        let number = 26712;
+
+        let eachNumber = number.toString().split('').map(iNum => parseInt(iNum, 10));
+        // output is [2, 6, 7, 1, 2]
+        console.log(eachNumber)
+
+        let display = eachNumber[0] + "-" + eachNumber[1] + "+" + eachNumber[2] + "-" + eachNumber[3] + "-" + eachNumber[4];
+        // output is 2-6+7-1-2
+        console.log(display);
+
+        // resrouces
+        // https://www.codegrepper.com/code-examples/javascript/split+strings+of+number+js
     </script>
 </head>
 <body>
