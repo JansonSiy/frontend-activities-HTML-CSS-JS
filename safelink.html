@@ -7,22 +7,41 @@
     <title>Document</title>
     <script>
         var arr = ["X:-1", "Y:1", "X:-4", "B:3", "X:5"];
-        // STEP 0: Create an empty object
+
+        // create an empty object
         var obj = {};
 
-        // STEP 1: Loop through var arr
-        for (var i = 0; i < arr.length; i++) {
-            // STEP 2: Split the key and value at the ':' character
-            var split = arr[i].split(':');
-            // STEP 3: Obj now has the element[i], using index[0] as the key and index[1] as the value
+        // loop through var arr
+        for (let i = 0; i < arr.length; i++) {
+            // split the key and value at the ':' character
+            let split = arr[i].split(':');
+            // obj now has the element[i], using index[0] as the key and index[1] as the value
             obj[split[0]] = split[1];
         }
 
         // output is {X: '5', Y: '1', B: '3'}
         console.log(obj);
+
+        // create an empty string
+        var string = "";
+
+        // loop through the updated obj then add to string
+        for (let i in obj) {
+            // string is now equals to key : value
+            string += i + ":" + obj[i] + ", ";
+
+            // substring syntax (index, slice)
+            string = string.substring(i, string.length -1);
+        }
+
+        // output is X:5,Y:1,B:3
+        console.log(string);
+
+        // resources
+        // https://stackoverflow.com/questions/27412260/converting-string-array-into-a-key-value-pair-object
+        // https://code-boxx.com/object-to-string-javascript/
     </script>
 </head>
 <body>
-    
 </body>
 </html>
