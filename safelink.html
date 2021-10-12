@@ -17,7 +17,7 @@
             // split the key and value at the ':' character
             let split = arr[i].split(':');
             // obj now has the element[i], using index[0] as the key and index[1] as the value
-            obj[split[0]] = split[1];
+            obj[split[0]] = Number(split[1]);
             // sort obj
             // obj.sort((a, b) => (a.split[0] > b.split[0]) ? 1 : -1);
         }
@@ -57,6 +57,8 @@
 
         // resrouces
         // https://www.codegrepper.com/code-examples/javascript/split+strings+of+number+js
+
+
     </script>
 </head>
 <body>
