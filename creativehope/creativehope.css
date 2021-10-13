@@ -1,0 +1,124 @@
+/* body */
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    height: 100%;
+}
+
+/* header and footer */
+header, footer {
+    position: absolute;
+    width: 95%;
+    margin-left: 2.5vw;
+    background-color: skyblue;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+header {
+    height: 10vh;
+    margin-top: 3vh;
+    justify-content: space-between;
+}
+
+footer {
+    height: 5vh;
+    margin-bottom: 2.5vh;
+    bottom: 0;
+    font-size: 0.8rem;
+    justify-content: center;
+}
+
+/* logo and nav links */
+h1 {
+    margin-left: 15%;
+}
+
+.navLinks {
+    margin-right: 15%;
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    font-weight: bold;
+}
+
+a:link, a:visited, a:active {
+    color: white;
+    text-decoration: none;
+}
+
+/* main */
+p, table, .moreInformation {
+    font-size: 0.75rem;
+}
+
+main {
+    position: absolute;
+    margin-top: 15.8vh;
+    margin-left: 18vw;
+    height: 76%;
+    width: 65%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+section {
+    width: 100%;
+}
+
+.imgBanner {
+    height: 45%;
+}
+
+.sample {
+    margin: 1.5vh 0vh 0.3vh 0vh;
+}
+h3 {
+    border-bottom: 2.5px solid skyblue;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+}
+.rectangle {
+    height: 2vh;
+    width: 0.3vw;
+    margin: 0vw 0.3vw 0.2vw 0vw;
+    background-color: skyblue;
+}
+p {
+    margin: 1.3vh 0vh 1.3vh 0vh;
+}
+
+table {
+    line-height: 2.5vh;
+    padding-top: 0.8vh;
+}
+table td:nth-of-type(even) {
+    padding-left: 1.5vw;
+}
+
+.moreInformation {
+    color: #00BFFF;
+    font-weight: bold;
+    text-decoration: underline;
+    height: 2vh;
+    width: 8vw;
+    position: absolute;
+    left: 56vw;
+    bottom: 2vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.videoplayImg {
+    margin-top: 0.5vh;
+}
