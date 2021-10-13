@@ -122,3 +122,99 @@ table td:nth-of-type(even) {
 .videoplayImg {
     margin-top: 0.5vh;
 }
+
+/* Media Queries */
+
+/* Screen Size 1920×1080 */
+/* @media (max-width: 1920px) {
+    main {
+        margin-top: 17vh;
+    }
+    .imgBanner {
+        height: 50%;
+    }
+    .sample {
+        margin: 2vh 0vh 1vh 0vh;
+    }
+    .moreInformation {
+        bottom: 3vh;
+    }
+} */
+
+/* Screen Size 1366×768 */
+@media (max-width: 1366px) {
+    .imgBanner {
+        height: 35%;
+    }
+}
+
+/* Screen Size 768×1024 */
+@media (max-width: 768px) {
+    .navLinks {
+        margin-right: 13%;
+        width: 40%;
+    }
+    .imgBanner {
+        height: 30%;
+    }
+    .moreInformation {
+        width: 15vw;
+        left: 50vw;
+    }
+    .videoplayImg {
+        margin-top: 0.1vh;
+    }
+}
+
+/* Screen Size 375×667 */
+@media (max-width: 375px) {
+    h1 {
+        margin-left: 5%;
+        font-size: 1rem;
+    }
+    .navLinks {
+        margin-right: 5%;
+        width: 60%;
+    }
+    main {
+        margin-top: 15vh;
+    }
+    h3 {
+        font-size: 0.8rem;
+    }
+    p, table, .moreInformation {
+        font-size: 0.5rem;
+    }
+    .sample {
+        margin: 1.5vh 0vh 0vh 0vh;
+    }
+    footer, .navLinks {
+        font-size: 0.6rem;
+    }
+    .moreInformation {
+        width: 20vw;
+        left: 45vw;
+        bottom: 0vh;
+    }
+    .videoplayImg {
+        margin-top: 0.5vh;
+    }
+}
+
+/* Screen Size 360×720 */
+@media (max-width: 360px) {
+    .imgBanner {
+        height: 25%;
+    }
+    p, table, .moreInformation {
+        font-size: 0.48rem;
+    }
+    p {
+        line-height: 0.8rem;
+    }
+    .moreInformation {
+        width: 20vw;
+        left: 40vw;
+        bottom: 0.5vh;
+    }
+}
